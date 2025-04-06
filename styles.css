@@ -1,0 +1,624 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #20c906;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background-color: #20c906;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* Zentriert die Buttons horizontal */
+    align-items: center;      /* Zentriert die Buttons optional vertikal */
+    margin-bottom: 10px;
+}
+
+.category-btn {
+    background-color: #1a9c23;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 15px;
+    flex: 0 1 calc(45% - 20px);
+    font-size: 20px;
+    text-align: center;
+}
+
+.category-btn.selected {
+    background-color: #1a9c23;
+    color: white;
+}
+
+.questions-area {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.question-number {
+    font-size: 0.9em;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.answers-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.answers-container button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    background-color: #bfbfb6; /* Hintergrundfarbe der Antwort-Schaltflächen */
+    color: black; /* Textfarbe */
+    border: none; /* Rahmen entfernen */
+    border-radius: 10px; /* Ecken abrunden */
+    cursor: pointer; /* Zeiger-Cursor */
+    font-size: 16px; /* Schriftgröße */
+}
+
+.answers-container button:hover {
+    background-color: #a3a396; 
+    color: black; /* Farbe des Texts */
+    transform: scale(1.05); /* Leichte Vergrößerung beim Hover */
+    transition: all 0.3s ease; /* Weicher Übergangseffekt */
+}
+
+.feedback {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.feedback.correct {
+    color: green;
+}
+
+.feedback.wrong {
+    color: red;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.0em;
+}
+
+.next-btn {
+    background-color: #1ed445; /* Farbe für Weiter-Button */
+    color: white; /* Weißer Text */
+    border: none; /* Kein Rahmen */
+    padding: 10px 20px; /* Gleicher Innenabstand wie bei Reset */
+    margin: 20px auto; /* Zentriert und mit Abstand */
+    cursor: pointer; /* Zeiger-Cursor beim Hover */
+    border-radius: 15px; /* Gleiche abgerundete Ecken */
+    display: block; /* Blockweise Darstellung */
+    font-size: 16px; /* Schriftgröße angepasst */
+    font-weight: bold; /* Fetter Text wie bei Reset */
+    text-align: center; /* Zentrierter Text */
+    transition: background-color 0.3s ease; /* Weicher Farbübergang */
+}
+
+.next-btn:hover {
+    background-color: #6C6C64; /* Dunkleres Grau beim Hover */
+}
+
+.new-quiz-btn, .restart-btn {
+    background-color: #005b96;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.answers-container button.selected {
+    background-color: #f5e553 !important; 
+    color: black;
+    border: 2px solid #080808; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+}
+
+
+#question-container .question-number {
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+    header, footer {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .category-container {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .category-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .questions-area {
+        padding: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+}
+
+footer p {
+    color: #e6ecf2;
+    font-size: 12px;
+}
+
+
+#score-container {
+    max-width: 500px; /* Begrenzung der Breite für den Score-Container */
+    margin: 20px auto; /* Zentriert und sorgt für Abstand */
+    padding: 20px; /* Innenabstand, um die Inhalte ästhetischer zu machen */
+    text-align: center; /* Inhalt zentrieren */
+    border: 1px solid #ccc; /* Leichte Umrandung */
+    border-radius: 10px; /* Abgerundete Ecken */
+    background-color: #f9f9f9; /* Angenehme Hintergrundfarbe */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leichte Schatten für optische Verbesserung */
+}
+
+
+#score-container p {
+    text-align: center;
+}
+
+
+#score-container h3 {
+    margin-bottom: 10px; /* Mehr Abstand unter dem Titel */
+    text-align: center;
+}
+
+#score-container div {
+    width: auto; 
+    max-width: 300px;
+    height: auto;
+    padding: 5px;
+    margin-bottom: 5px; /* Abstand zwischen den Blöcken */
+    display: block; /* Jeder Block soll eine eigene Zeile bekommen */
+}
+
+
+.category-btn.completed {
+    background-color: #8B8B83 !important;
+    color: white !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.category-container,
+.subcategory-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.medal-image {
+    max-width: 120px; /* Maximale Breite für die Medaille */
+    max-height: 120px; /* Maximale Höhe der Medaille */
+    width: auto; /* Behalte das Seitenverhältnis */
+    height: auto; /* Behalte das Seitenverhältnis */
+    margin: 10px auto; /* Abstand innerhalb des Containers */
+    display: block; /* Bild wird zentriert dargestellt */
+}
+
+.centered {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#gesamtErgebnisContainer {
+    text-align: center;
+}
+
+.category-result {
+    margin: 20px 0;
+    border: 2px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+
+/* CSS-Animation für das Anwachsen der Medaillenbilder */
+@keyframes grow {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Stil für die dynamischen Medaillenbilder (auf Kategorieseiten) */
+.medal-image.dynamic {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    margin: 10px auto;
+    animation: grow 1s ease-in-out; /* Animation: 1 Sekunde Dauer */
+    animation-delay: 0.000005s;
+
+}
+
+/* Stil für die statischen Medaillenbilder (auf der Gesamtergebnis-Seite) */
+.medal-image.static {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Stil für den Medaillen-Text */
+.medal-text {
+    line-height: 1.5; /* Abstand zwischen den Zeilen vergrößern */
+}
+
+.answer-btn {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%; /* Volle Breite */
+    max-width: 400px;
+    margin: 10px auto; /* Zentriert die Buttons */
+    text-align: center;
+}
+
+.answer-btn.selected {
+    background-color: #ffd700;
+    color: #fff;
+    cursor: default;
+}
+
+.answer-img {
+    width: 300px; /* Neue Breite */
+    height: auto; /* Beibehaltung des Seitenverhältnisses */
+    display: block; /* Darstellung als Block-Element */
+    margin: 10px auto; /* Zentrierung und vertikaler Abstand */
+}
+
+
+.answer-img.selected {
+    border: 5px solid #4CAF50;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease; /* Sanfte Übergänge */
+    transform: scale(1.05); /* Leichte Vergrößerung */
+    transition: transform 0.3s ease; /* Sanfte Übergänge */
+}
+
+.answers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feedback-btn, .back-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: auto;
+    max-width: 200px;
+}
+
+.feedback-question {
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.feedback-answer {
+    margin: 5px 0;
+}
+
+.feedback-image {
+    display: block;
+    margin: 10px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Stil für den Startseite-Button */
+.start-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Grüner Hintergrund */
+    color: black; 
+    border: none;
+    border-radius: 30px; /* Runde Ecken */
+    text-align: center;
+    width: auto;
+    max-width: 200px;
+    transition: background-color 0.3s; /* Weiche Hintergrundfarbe-Transition */
+}
+
+.start-btn:hover {
+    background-color: #45a049; /* Dunklere grüne Farbe beim Hover */
+}
+
+.correct-bar, .wrong-bar {
+    width: 150px !important; /* Einheitliche Breite in Pixel */
+    height: 30px;
+    color: white;
+    line-height: 30px;
+    margin: 5px auto;
+    border-radius: 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.correct-bar {
+    background-color: #4caf50;
+}
+
+.wrong-bar {
+    background-color: #f44336;
+}
+
+/* Hintergrund des Gesamtergebnis-Containers */
+.total-result-container {
+    background-color: rgba(173, 216, 230, 0.5); /* Hellblau und leicht durchsichtig */
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Stil für den Fehlerseiten-Button */
+.start-btn {
+    font-size: 1.2em;        /* Eine Nummer größer */
+    background-color: orange;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 40px;       /* Abstandsregel sorgt für Abstand nach oben */
+    display: block;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.start-btn:hover {
+    background-color: darkorange; /* Etwas dunkler bei Hover */
+}
+
+#overall-result-btn {
+    font-size: 1.2em;          
+    background-color: orange; 
+    color: black;             
+    border: none;             
+    border-radius: 5px;       
+    padding: 10px 20px;       
+    cursor: pointer;          
+    text-align: center;       
+    display: block;           
+    margin: 10px auto;        
+    width: auto;              
+    max-width: 200px;         
+    transition: background-color 0.3s; 
+}
+
+#overall-result-btn:hover {
+    background-color: darkorange;
+}
+
+
+.desired-overall-btn-class {
+    font-size: 1.2em;          /* Gleiche Schriftgröße wie der gewünschte Button */
+    background-color: orange; /* Gelb-orange Farbe wie im Screenshot */
+    color: black;             /* Schwarzer Text */
+    border: none;             /* Kein Rahmen */
+    border-radius: 5px;       /* Abgerundete Ecken */
+    padding: 10px 20px;       /* Innenabstände */
+    margin: 20px auto;        /* Zentrierte Ausrichtung */
+    cursor: pointer;          /* Zeiger-Cursor bei Hover */
+    display: block;           /* Block-Layer */
+    text-align: center;       /* Zentrierter Text */
+    width: auto;              /* Automatisch an Textbreite anpassen */
+    max-width: 200px;         /* Maximale Breite */
+    transition: background-color 0.3s; /* Weicher Farbwechsel bei Hover */
+}
+
+.desired-overall-btn-class:hover {
+    background-color: darkorange; /* Dunklere Farbe beim Hover */
+}
+
+.wrong-answer {
+    color: red;
+    font-weight: bold;
+}
+
+.correct-answer {
+    color: green;
+    font-weight: bold;
+}
+
+.error-list {
+    text-align: left; /* Links ausrichten */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Inhalt nach links schieben */
+    padding-left: 20px; /* Falls ein kleiner Abstand gewünscht ist */
+}
+
+.feedback-question {
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.reset-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #e65364; /* Roter Hintergrund */
+    color: white;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    width: auto;
+    max-width: 200px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.reset-btn:hover {
+    background-color: #6C6C64;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blinking {
+    animation: blinkingText 0.8s infinite;
+}
+
+@keyframes blinkingText {
+    0% { color: red; }
+    50% { color: transparent; }
+    100% { color: red; }
+}
+
+.image-selected {
+    border-color: green;
+    border-style: solid;
+}
+
+.image-incorrect {
+    border-color: red;
+    border-style: solid;
+}
+
+/* Sicherstellen, dass image-incorrect die Priorität hat */
+.answer-img.image-selected.image-incorrect {
+    border-color: red;
+    border-style: solid;
+}
+
+/* Für Bilder (Fragebilder) in Fragen */
+.questions-area img {
+    max-width: 70%; /* Skaliert das Bild auf maximal die Breite des Containers */
+    height: auto; /* Beibehaltung des Seitenverhältnisses */
+    display: block; /* Zentriert das Bild (entfernt unnötigen Whitespace) */
+    margin: 10px auto; /* Optional: Abstände rund um das Bild */
+}
+
+/* Bildgröße dynamisch an den Container anpassen */
+.question-image {
+    max-width: 100%; /* Bild nimmt maximal 90% der Containerbreite ein */
+    height: auto; /* Höhe wird proportional angepasst */
+    display: block;
+    margin: 0 auto; /* Zentriert das Bild */
+}
+
+@media (max-width: 768px) {
+    #score-container {
+        max-width: 90%; /* Container passt sich der Bildschirmbreite an */
+        padding: 10px; /* Weniger Innenabstand */
+    }
+    .medal-image {
+        max-width: 80px; /* Verkleinere Medaille auf kleineren Geräten */
+        max-height: 80px;
+    }
+}
+
+@keyframes blink-green {
+    0% { color: #2E7D32; }   /* Dunkelgrün */
+    50% { color: transparent; } /* Unsichtbar */
+    100% { color: #2E7D32; }   /* Dunkelgrün */
+}
+.text-blink-correct {
+    animation: blink-green 0.5s infinite; /* Blinkt unendlich lang */
+}
+
+@keyframes blink-red {
+    0% { color: #C62828; }   /* Dunkelrot */
+    50% { color: transparent; } /* Unsichtbar */
+    100% { color: #C62828; }   /* Dunkelrot */
+}
+.text-blink-wrong {
+    animation: blink-red 0.5s infinite; /* Blinkt unendlich lang */
+}
+
+/* Füge dies in deine styles.css ein */
+.sound-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px auto;
+    cursor: pointer;
+    border-radius: 15px;
+    display: block;
+}
+
