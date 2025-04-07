@@ -601,7 +601,7 @@ function displayOverallScore() {
 
     // Sound-Logik (nur bei Platin) - OHNE AUTOPLAY
     if (medal === 'Platin') {
-        const platinSound = new Audio('Die Flippers.mp3');
+        const platinSound = new Audio('HEINO.mp3');
         
         // Sound-Button
         const soundButton = document.createElement('button');
